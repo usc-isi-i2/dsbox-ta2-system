@@ -5,6 +5,7 @@
     git config --global credential.https://github.com.username [github_user_id]
 
 ## 2. Pull recursive
+    docker login registry.datadrivendiscovery.org
     git clone --recursive https://github.com/usc-isi-i2/dsbox-ta2-system
 
 ## 3. Creating the ISI Docker Image
