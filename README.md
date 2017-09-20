@@ -1,5 +1,5 @@
 # 1. DSBox TA2 System
-# Readme borrowed from: https://github.com/usc-isi-i2/dsbox-ta2/blob/docker-ta2/README.md
+Readme borrowed from: https://github.com/usc-isi-i2/dsbox-ta2/blob/docker-ta2/README.md
 
 # 2. Pull recursive
 git clone --recursive https://github.com/usc-isi-i2/dsbox-ta2-system
