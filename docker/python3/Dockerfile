@@ -1,17 +1,22 @@
 FROM registry.datadrivendiscovery.org/jpl/docker_images/jpl_base_python3.5
 MAINTAINER D3M
 
+RUN apt-get install -y python3-dev
+
 RUN \
 pip3 install punk && \
 pip3 install langdetect && \
 pip3 install zerorpc && \
-pip3 install stopit
+pip3 install stopit && \
+pip3 install grpcio grpcio-tools && \
+pip3 install librosa cvxpy
 
 EXPOSE 8888
 
 # Copy the TA2 code to the docker container
 ENV CODE /dsbox
 ENV TA2 $CODE/dsbox-ta2/python
+ENV TA2API $CODE/ta3ta2-api
 COPY . $CODE
 
 # PYTHON 3 changes
@@ -28,5 +33,13 @@ RUN \
 sed -i.bak 's/primitive-interfaces\/python2/primitive-interfaces/' \
 $TA2/dsbox_dev_setup.py
 
-# Make a soft link to the search executable 
+# Compile TA3-TA2 api protocol files
+RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/core.proto
+RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/data_ext.proto
+RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/dataflow_ext.proto
+
+# Make a soft link to the search executable
 RUN ln -s $TA2/ta2-search /usr/bin/ta2_search
+
+# Start the TA2 server
+CMD $TA2/server/ta2-server.py
