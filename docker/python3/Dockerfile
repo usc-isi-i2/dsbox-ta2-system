@@ -9,7 +9,7 @@ pip3 install langdetect && \
 pip3 install zerorpc && \
 pip3 install stopit && \
 pip3 install grpcio grpcio-tools && \
-pip3 install librosa cvxpy
+pip3 install librosa cvxpy h5py
 
 EXPOSE 8888
 

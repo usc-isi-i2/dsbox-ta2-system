@@ -10,7 +10,7 @@ pip install zerorpc && \
 pip install stopit && \
 pip install typing && \
 pip install grpcio grpcio-tools && \
-pip install librosa cvxpy
+pip install librosa cvxpy h5py
 
 # TA2 Server port
 EXPOSE 8888
