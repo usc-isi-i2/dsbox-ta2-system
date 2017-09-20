@@ -1,10 +1,8 @@
 # 1. DSBox TA2 System
 
-# 2. Make sure your Credentials are set in .gitconfig
-    [credential "https://gitlab.datadrivendiscovery.com"]
-        username = [gitlab_user_id]
-    [credential "https://github.com"]
-        username = [github_user_id]
+# 2. Make sure your git credentials are set
+    git config --global credential.https://gitlab.datadrivendiscovery.com.username [gitlab_user_id]
+    git config --global credential.https://github.com.username [github_user_id]
 
 # 3. Pull recursive
     ``` git clone --recursive https://github.com/usc-isi-i2/dsbox-ta2-system ```
