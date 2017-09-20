@@ -1,15 +1,9 @@
 [submodule "dsbox-ta2"]
 	path = dsbox-ta2
 	url = https://github.com/usc-isi-i2/dsbox-ta2
-[submodule "dsbox-profiling"]
-	path = dsbox-profiling
-	url = https://github.com/usc-isi-i2/dsbox-profiling
 [submodule "dsbox-cleaning"]
 	path = dsbox-cleaning
 	url = https://github.com/usc-isi-i2/dsbox-cleaning
-[submodule "dsbox-corex"]
-	path = dsbox-corex
-	url = https://github.com/usc-isi-i2/dsbox-corex
 [submodule "ta3ta2-api"]
 	path = ta3ta2-api
 	url = https://gitlab.datadrivendiscovery.org/d3m/ta3ta2-api
@@ -20,3 +14,9 @@
 	path = primitive-interfaces
 	url = https://gitlab.datadrivendiscovery.org/d3m/primitive-interfaces
 	branch = unified_interface
+[submodule "dsbox-corex"]
+	path = dsbox-corex
+	url = https://github.com/varunratnakar/dsbox-corex
+[submodule "dsbox-profiling"]
+	path = dsbox-profiling
+	url = https://github.com/varunratnakar/dsbox-profiling
