@@ -5,7 +5,7 @@
     git config --global credential.https://github.com.username [github_user_id]
 
 # 3. Pull recursive
-    ``` git clone --recursive https://github.com/usc-isi-i2/dsbox-ta2-system ```
+    git clone --recursive https://github.com/usc-isi-i2/dsbox-ta2-system
 
 # 4. Creating the ISI Docker Image
 Readme borrowed from: https://github.com/usc-isi-i2/dsbox-ta2/blob/docker-ta2/README.md
