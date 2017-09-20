@@ -1,7 +1,7 @@
 # DSBox TA2 System
 
 ## 1. Make sure your git credentials are set
-    git config --global credential.https://gitlab.datadrivendiscovery.com.username [gitlab_user_id]
+    git config --global credential.https://gitlab.datadrivendiscovery.org.username [gitlab_user_id]
     git config --global credential.https://github.com.username [github_user_id]
 
 ## 2. Pull recursive
