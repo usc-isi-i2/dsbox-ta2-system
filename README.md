@@ -1,13 +1,13 @@
-# 1. DSBox TA2 System
+# DSBox TA2 System
 
-# 2. Make sure your git credentials are set
+## 1. Make sure your git credentials are set
     git config --global credential.https://gitlab.datadrivendiscovery.com.username [gitlab_user_id]
     git config --global credential.https://github.com.username [github_user_id]
 
-# 3. Pull recursive
+## 2. Pull recursive
     git clone --recursive https://github.com/usc-isi-i2/dsbox-ta2-system
 
-# 4. Creating the ISI Docker Image
+## 3. Creating the ISI Docker Image
 Readme borrowed from: https://github.com/usc-isi-i2/dsbox-ta2/blob/docker-ta2/README.md
 
 This section details the distilled commands that need to be run to create the docker image. The documentation mentioned
