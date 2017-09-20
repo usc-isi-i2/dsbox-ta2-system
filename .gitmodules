@@ -1,21 +1,21 @@
-[submodule "dsbox-corex"]
-	path = dsbox-corex
-	url = https://github.com/usc-isi-i2/dsbox-corex
 [submodule "dsbox-ta2"]
 	path = dsbox-ta2
-	url = https://github.com/usc-isi-i2/dsbox-ta2
-[submodule "dsbox-cleaning"]
-	path = dsbox-cleaning
-	url = https://github.com/usc-isi-i2/dsbox-cleaning
+	url = https://varunratnakar@github.com/usc-isi-i2/dsbox-ta2
 [submodule "dsbox-profiling"]
 	path = dsbox-profiling
 	url = https://github.com/usc-isi-i2/dsbox-profiling
-[submodule "spider"]
-	path = spider
-	url = https://gitlab.datadrivendiscovery.org/michigan/spider
+[submodule "dsbox-cleaning"]
+	path = dsbox-cleaning
+	url = https://github.com/usc-isi-i2/dsbox-cleaning
+[submodule "dsbox-corex"]
+	path = dsbox-corex
+	url = https://varunratnakar@github.com/usc-isi-i2/dsbox-corex
 [submodule "ta3ta2-api"]
 	path = ta3ta2-api
 	url = https://gitlab.datadrivendiscovery.org/d3m/ta3ta2-api
+[submodule "spider"]
+	path = spider
+	url = https://vratnakar@gitlab.datadrivendiscovery.org/michigan/spider
 [submodule "primitive-interfaces"]
 	path = primitive-interfaces
 	url = https://gitlab.datadrivendiscovery.org/d3m/primitive-interfaces
