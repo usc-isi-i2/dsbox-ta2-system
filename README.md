@@ -5,7 +5,6 @@
     git config --global credential.https://github.com.username [github_user_id]
 
 ## 2. Pull recursive
-    docker login registry.datadrivendiscovery.org
     git clone --recursive https://github.com/usc-isi-i2/dsbox-ta2-system
 
 ## 3. Creating the ISI Docker Image
@@ -17,7 +16,8 @@ correct credentials, urls and commands.
 
 1. In the same directory as this readme file run the following:
     
-    ``` docker build -f docker/python2/Dockerfile -t registry.datadrivendiscovery.org/ta2/isi_ta2:latest . ```
+    docker login registry.datadrivendiscovery.org 
+    docker build -f docker/python2/Dockerfile -t registry.datadrivendiscovery.org/ta2/isi_ta2:latest .
     
 2. Get the id of the image that was just created for use in the next step:
 
