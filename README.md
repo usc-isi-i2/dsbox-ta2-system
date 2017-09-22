@@ -16,8 +16,10 @@ correct credentials, urls and commands.
 
 1. In the same directory as this readme file run the following:
     
+    ```
     docker login registry.datadrivendiscovery.org 
     docker build -f docker/python2/Dockerfile -t registry.datadrivendiscovery.org/ta2/isi_ta2:latest .
+    ```
     
 2. Get the id of the image that was just created for use in the next step:
 
