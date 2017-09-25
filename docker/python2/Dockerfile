@@ -10,7 +10,8 @@ pip install zerorpc && \
 pip install stopit && \
 pip install typing && \
 pip install grpcio grpcio-tools && \
-pip install librosa cvxpy h5py
+pip install librosa cvxpy h5py && \
+pip install fancyimpute
 
 # TA2 Server port
 EXPOSE 8888
@@ -27,7 +28,8 @@ RUN python -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_ou
 RUN python -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/dataflow_ext.proto
 
 # Make a soft link to the search executable
+RUN chmod 755 $TA2/ta2-search
 RUN ln -s $TA2/ta2-search /usr/bin/ta2_search
 
 # Start the TA2 server
-CMD $TA2/server/ta2-server.py
+CMD python $TA2/server/ta2-server.py

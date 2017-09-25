@@ -9,7 +9,8 @@ pip3 install langdetect && \
 pip3 install zerorpc && \
 pip3 install stopit && \
 pip3 install grpcio grpcio-tools && \
-pip3 install librosa cvxpy h5py
+pip3 install librosa cvxpy h5py && \
+pip3 install fancyimpute
 
 EXPOSE 8888
 
@@ -39,7 +40,8 @@ RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_o
 RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/dataflow_ext.proto
 
 # Make a soft link to the search executable
+RUN chmod 755 $TA2/ta2-search
 RUN ln -s $TA2/ta2-search /usr/bin/ta2_search
 
 # Start the TA2 server
-CMD $TA2/server/ta2-server.py
+CMD python3 $TA2/server/ta2-server.py
