@@ -26,7 +26,7 @@ correct credentials, urls and commands.
     ```
     > docker images
     REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
-    isi-test-0.1                 latest              2df1c97d392b        9 hours ago         2.43GB
+    ../ta2/isi_ta2               latest              8787d9aa6999        9 hours ago         2.43GB
     ``` 
     
     
@@ -35,11 +35,24 @@ correct credentials, urls and commands.
    you want to run (in the case below, baseball)
 
     ``` 
-    > docker run -i --entrypoint /bin/bash -v /home/config.json:/home/code/dsbox-ta2/config.json -v 
-    /home/data/o_185:/baseball/ 2df1c97d392b -c 'ta2_search /home/code/dsbox-ta2/config.json' 
+    > docker run -it --entrypoint /bin/bash -v /tmp/conf/search-185.conf:/tmp/config.json -v /tmp/results:/tmp/results
+    -v /Users/varun/git/dsbox/data:/tmp/data 8787d9aa6999 -c 'ta2_search /tmp/config.json'
     ```
 
-4. If the docker run completes with pipelines created then you are ready to upload the image to the NIST Docker Registry.
+4. To evaluate the test executable, check in the results folder for an executable to run:
+
+    ``` 
+    > docker run -it --entrypoint /bin/bash -v /tmp/conf/test-185.conf:/tmp/config.json -v /tmp/results:/tmp/results 
+    -v /tmp/data:/tmp/data 8787d9aa6999 -c '/tmp/results/o_185/executables/1a8331f7-8a08-40bc-930c-c83ce684d7f9 /tmp/config.json'
+    ```
+
+5. To run the TA2 server, run docker like so:
+
+    ``` 
+    > docker run -v /Users/Varun/git/dsbox/data:/tmp/data -v /tmp/dsbox-ta2:/tmp/dsbox-ta2 -p 50051:50051 -d 8787d9aa6999
+    ```
+
+6. If the docker run completes with pipelines created then you are ready to upload the image to the NIST Docker Registry.
    If you do not have an account for this let Daragh Hartnett (daragh.hartnett@sri.com) know and he will get you the 
    credentials you need. Run the following commands:
 
@@ -48,7 +61,7 @@ correct credentials, urls and commands.
    > docker push registry.datadrivendiscovery.org/ta2/isi_ta2:latest 
    ```
    
-5. Run the Docker CI pipeline by opening the following in a browser: 
+7. Run the Docker CI pipeline by opening the following in a browser: 
 
       https://gitlab.datadrivendiscovery.org/TA2/ISI_ta2
     
