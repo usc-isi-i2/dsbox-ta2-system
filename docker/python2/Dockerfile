@@ -1,7 +1,7 @@
 FROM registry.datadrivendiscovery.org/jpl/docker_images/jpl_base_python2.7
 MAINTAINER D3M
 
-RUN apt-get install -y python-dev
+RUN apt-get install -y libssl-dev
 
 RUN \
 pip install punk && \
@@ -14,7 +14,7 @@ pip install librosa cvxpy h5py && \
 pip install fancyimpute
 
 # TA2 Server port
-EXPOSE 8888
+EXPOSE 50051
 
 # Copy the TA2 code to the docker container
 ENV CODE /dsbox

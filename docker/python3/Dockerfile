@@ -1,7 +1,7 @@
 FROM registry.datadrivendiscovery.org/jpl/docker_images/jpl_base_python3.5
 MAINTAINER D3M
 
-RUN apt-get install -y python3-dev
+RUN apt-get install -y python3-dev libssl-dev
 
 RUN \
 pip3 install punk && \
@@ -12,7 +12,7 @@ pip3 install grpcio grpcio-tools && \
 pip3 install librosa cvxpy h5py && \
 pip3 install fancyimpute
 
-EXPOSE 8888
+EXPOSE 50051
 
 # Copy the TA2 code to the docker container
 ENV CODE /dsbox
@@ -44,4 +44,4 @@ RUN chmod 755 $TA2/ta2-search
 RUN ln -s $TA2/ta2-search /usr/bin/ta2_search
 
 # Start the TA2 server
-CMD python3 $TA2/server/ta2-server.py
+CMD python3 $TA2/server/ta2-server.py &
