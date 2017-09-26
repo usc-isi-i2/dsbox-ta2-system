@@ -44,4 +44,4 @@ RUN chmod 755 $TA2/ta2-search
 RUN ln -s $TA2/ta2-search /usr/bin/ta2_search
 
 # Start the TA2 server
-CMD python3 $TA2/server/ta2-server.py &
+CMD python3 $TA2/server/ta2-server.py
