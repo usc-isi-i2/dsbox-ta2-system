@@ -36,20 +36,22 @@ correct credentials, urls and commands.
 
     ``` 
     > docker run -it --entrypoint /bin/bash -v /tmp/conf/search-185.conf:/tmp/config.json -v /tmp/results:/tmp/results
-    -v /Users/varun/git/dsbox/data:/tmp/data 8787d9aa6999 -c 'ta2_search /tmp/config.json'
+    -v /Users/varun/git/dsbox/data:/tmp/data registry.datadrivendiscovery.org/ta2/isi_ta2:latest -c 'ta2_search /tmp/config.json'
     ```
 
 4. To evaluate the test executable, check in the results folder for an executable to run:
 
     ``` 
     > docker run -it --entrypoint /bin/bash -v /tmp/conf/test-185.conf:/tmp/config.json -v /tmp/results:/tmp/results 
-    -v /tmp/data:/tmp/data 8787d9aa6999 -c '/tmp/results/o_185/executables/1a8331f7-8a08-40bc-930c-c83ce684d7f9 /tmp/config.json'
+    -v /tmp/data:/tmp/data registry.datadrivendiscovery.org/ta2/isi_ta2:latest 
+    -c '/tmp/results/o_185/executables/1a8331f7-8a08-40bc-930c-c83ce684d7f9 /tmp/config.json'
     ```
 
 5. To run the TA2 server, run docker like so:
 
     ``` 
-    > docker run -v /Users/Varun/git/dsbox/data:/tmp/data -v /tmp/dsbox-ta2:/tmp/dsbox-ta2 -p 50051:50051 -d 8787d9aa6999
+    > docker run -v /Users/Varun/git/dsbox/data:/tmp/data -v /tmp/dsbox-ta2:/tmp/dsbox-ta2 -p 50051:50051 
+    -d registry.datadrivendiscovery.org/ta2/isi_ta2:latest
     ```
 
 6. If the docker run completes with pipelines created then you are ready to upload the image to the NIST Docker Registry.
