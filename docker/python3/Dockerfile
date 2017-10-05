@@ -1,18 +1,30 @@
 FROM registry.datadrivendiscovery.org/jpl/docker_images/jpl_base_python3.5
 MAINTAINER D3M
 
-RUN apt-get install -y python3-dev libssl-dev
+RUN apt-get install -y libssl-dev python3-dev python3-setuptools
 
 RUN \
+pip3 install --upgrade pip && \
 pip3 install punk && \
 pip3 install langdetect && \
 pip3 install zerorpc && \
 pip3 install stopit && \
 pip3 install grpcio grpcio-tools && \
 pip3 install librosa cvxpy h5py && \
-pip3 install fancyimpute
+pip3 install fancyimpute 
+
+# More python packages
+RUN pip3 install pandas keras tensorflow
+RUN pip3 install pillow
+RUN pip3 install networkx
+
+RUN apt-get -y install ffmpeg flac
 
 EXPOSE 50051
+
+# Hack for Keras not to download stuff
+COPY keras /root/.keras
+ADD https://github.com/fchollet/deep-learning-models/releases/download/v0.2/resnet50_weights_tf_dim_ordering_tf_kernels.h5 /root/.keras/models/
 
 # Copy the TA2 code to the docker container
 ENV CODE /dsbox
