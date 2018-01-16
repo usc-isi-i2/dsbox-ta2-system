@@ -14,7 +14,11 @@ pip install librosa cvxpy h5py && \
 pip install fancyimpute
 
 # TA2 Server port
-EXPOSE 50051
+EXPOSE 45042
+
+# Hack for Keras not to download stuff
+COPY keras /root/.keras
+ADD https://github.com/fchollet/deep-learning-models/releases/download/v0.2/resnet50_weights_tf_dim_ordering_tf_kernels.h5 /root/.keras/models/
 
 # Copy the TA2 code to the docker container
 ENV CODE /dsbox

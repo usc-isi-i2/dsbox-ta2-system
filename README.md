@@ -57,7 +57,7 @@ correct credentials, urls and commands.
     ``` 
     > docker run -v /Users/Varun/git/dsbox/data:/tmp/data \
     -v /tmp/dsbox-ta2:/tmp/dsbox-ta2 \
-    -p 50051:50051 \
+    -p 45042:45042 \
     -d registry.datadrivendiscovery.org/ta2/isi_ta2:latest
     ```
 

@@ -1,7 +1,11 @@
-FROM registry.datadrivendiscovery.org/jpl/docker_images/jpl_base_python3.5
+#FROM registry.datadrivendiscovery.org/jpl/docker_images:python3.6_base
+FROM python:3.6-stretch
 MAINTAINER D3M
 
-RUN apt-get install -y libssl-dev python3-dev python3-setuptools
+RUN apt-get update
+RUN apt-get -y install libssl-dev 
+#python3-dev python3-setuptools
+RUN apt-get -y install ffmpeg flac
 
 RUN \
 pip3 install --upgrade pip && \
@@ -11,16 +15,14 @@ pip3 install zerorpc && \
 pip3 install stopit && \
 pip3 install grpcio grpcio-tools && \
 pip3 install librosa cvxpy h5py && \
-pip3 install fancyimpute 
+pip3 install fancyimpute
 
 # More python packages
 RUN pip3 install pandas keras tensorflow
 RUN pip3 install pillow
-RUN pip3 install networkx
+RUN pip3 install pslgraph networkx
 
-RUN apt-get -y install ffmpeg flac
-
-EXPOSE 50051
+EXPOSE 45042
 
 # Hack for Keras not to download stuff
 COPY keras /root/.keras
@@ -31,6 +33,9 @@ ENV CODE /dsbox
 ENV TA2 $CODE/dsbox-ta2/python
 ENV TA2API $CODE/ta3ta2-api
 COPY . $CODE
+
+# PIP install d3m types
+#RUN cd $CODE/types && pip3 install .
 
 # PYTHON 3 changes
 # Change environment from python to python3 in code
@@ -50,6 +55,9 @@ $TA2/dsbox_dev_setup.py
 RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/core.proto
 RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/data_ext.proto
 RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/dataflow_ext.proto
+
+# Install D3M stuff
+RUN pip3 install --process-dependency-links primitive-interfaces
 
 # Make a soft link to the search executable
 RUN chmod 755 $TA2/ta2-search
