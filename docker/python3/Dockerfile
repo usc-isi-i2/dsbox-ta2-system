@@ -22,6 +22,9 @@ RUN pip3 install pandas keras tensorflow
 RUN pip3 install pillow
 RUN pip3 install pslgraph networkx
 
+# Install D3M stuff
+RUN pip3 install --process-dependency-links primitive-interfaces
+
 EXPOSE 45042
 
 # Hack for Keras not to download stuff
@@ -55,9 +58,6 @@ $TA2/dsbox_dev_setup.py
 RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/core.proto
 RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/data_ext.proto
 RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/dataflow_ext.proto
-
-# Install D3M stuff
-RUN pip3 install --process-dependency-links primitive-interfaces
 
 # Make a soft link to the search executable
 RUN chmod 755 $TA2/ta2-search
