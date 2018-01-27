@@ -18,7 +18,7 @@ correct credentials, urls and commands.
     
     ```
     docker login registry.datadrivendiscovery.org 
-    docker build -f docker/python3/Dockerfile -t registry.datadrivendiscovery.org/ta2/isi_ta2:latest .
+    docker build -f docker/python3/Dockerfile -t registry.datadrivendiscovery.org/j18_ta2eval/isi_ta2:stable .
     ```
     
 2. Get the id of the image that was just created for use in the next step:
@@ -38,7 +38,7 @@ correct credentials, urls and commands.
     > docker run -it --entrypoint /bin/bash \
     -v /tmp/conf/search-185.conf:/tmp/config.json \
     -v /tmp/results:/tmp/results \
-    -v /Users/varun/git/dsbox/data:/tmp/data registry.datadrivendiscovery.org/ta2/isi_ta2:latest \
+    -v /Users/varun/git/dsbox/data:/tmp/data registry.datadrivendiscovery.org/j18_ta2eval/isi_ta2:stable \
     -c 'ta2_search /tmp/config.json'
     ```
 
@@ -48,7 +48,7 @@ correct credentials, urls and commands.
     > docker run -it --entrypoint /bin/bash \
     -v /tmp/conf/test-185.conf:/tmp/config.json \
     -v /tmp/results:/tmp/results \
-    -v /tmp/data:/tmp/data registry.datadrivendiscovery.org/ta2/isi_ta2:latest \
+    -v /tmp/data:/tmp/data registry.datadrivendiscovery.org/j18_ta2eval/isi_ta2:stable \
     -c '/tmp/results/o_185/executables/1a8331f7-8a08-40bc-930c-c83ce684d7f9 /tmp/config.json'
     ```
 
@@ -58,7 +58,7 @@ correct credentials, urls and commands.
     > docker run -v /Users/Varun/git/dsbox/data:/tmp/data \
     -v /tmp/dsbox-ta2:/tmp/dsbox-ta2 \
     -p 45042:45042 \
-    -d registry.datadrivendiscovery.org/ta2/isi_ta2:latest
+    -d registry.datadrivendiscovery.org/j18_ta2eval/isi_ta2:stable
     ```
 
 6. If the docker run completes with pipelines created then you are ready to upload the image to the NIST Docker Registry.
@@ -67,7 +67,7 @@ correct credentials, urls and commands.
 
    ```  
    > docker login registry.datadrivendiscovery.org
-   > docker push registry.datadrivendiscovery.org/ta2/isi_ta2:latest 
+   > docker push registry.datadrivendiscovery.org/j18_ta2eval/isi_ta2:stable
    ```
    
 7. Run the Docker CI pipeline by opening the following in a browser: 
@@ -79,6 +79,5 @@ correct credentials, urls and commands.
    - Click on Create Pipeline
    - Click on the Play button in the setup node.
    - In the logs, you should be able to see the latest image id (63e81a8c1fed for example) embedded in the long 
-   identifier for the latest docker image being used (Using docker image registry.datadrivendiscovery.org/ta2/isi_ta2:
-   latest ID=sha256:**63e81a8c1fed**c2beabb2e8ee3b2cb84b4ed96dc97ebc071d0a2217d984716708...)
+   identifier for the latest docker image being used (Using docker image registry.datadrivendiscovery.org/j18_ta2eval/isi_ta2:stable ID=sha256:**63e81a8c1fed**c2beabb2e8ee3b2cb84b4ed96dc97ebc071d0a2217d984716708...)
    
