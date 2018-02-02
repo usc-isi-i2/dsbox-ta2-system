@@ -17,3 +17,6 @@
 [submodule "dsbox-cleaning"]
 	path = dsbox-cleaning
 	url = https://github.com/usc-isi-i2/dsbox-cleaning
+[submodule "ta3ta2-api"]
+	path = ta3ta2-api
+	url = https://gitlab.com/datadrivendiscovery/ta3ta2-api
