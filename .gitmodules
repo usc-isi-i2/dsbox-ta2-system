@@ -1,9 +1,6 @@
 [submodule "dsbox-ta2"]
 	path = dsbox-ta2
 	url = https://github.com/usc-isi-i2/dsbox-ta2
-[submodule "ta3ta2-api"]
-	path = ta3ta2-api
-	url = https://gitlab.datadrivendiscovery.org/d3m/ta3ta2-api
 [submodule "spider"]
 	path = spider
 	url = https://gitlab.datadrivendiscovery.org/michigan/spider
