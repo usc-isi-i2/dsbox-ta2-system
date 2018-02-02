@@ -1,5 +1,7 @@
 #FROM registry.datadrivendiscovery.org/jpl/docker_images:python3.6_base
-FROM python:3.6-stretch
+#FROM python:3.6-stretch
+FROM registry.datadrivendiscovery.org/jpl/docker_images/complete:ubuntu-xenial-python36-v2018.1.26
+
 MAINTAINER D3M
 
 RUN apt-get update
@@ -23,13 +25,14 @@ RUN pip3 install pillow
 RUN pip3 install pslgraph networkx
 
 # Install D3M stuff
-RUN pip3 install --process-dependency-links primitive-interfaces
+# RUN pip3 install --process-dependency-links primitive-interfaces
 
 EXPOSE 45042
 
 # Hack for Keras not to download stuff
 COPY keras /root/.keras
 ADD https://github.com/fchollet/deep-learning-models/releases/download/v0.2/resnet50_weights_tf_dim_ordering_tf_kernels.h5 /root/.keras/models/
+ADD https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5 /root/.keras/models/
 
 # Copy the TA2 code to the docker container
 ENV CODE /dsbox

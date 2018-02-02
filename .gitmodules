@@ -1,9 +1,7 @@
 [submodule "dsbox-ta2"]
 	path = dsbox-ta2
 	url = https://github.com/usc-isi-i2/dsbox-ta2
-[submodule "spider"]
-	path = spider
-	url = https://gitlab.datadrivendiscovery.org/michigan/spider
+	branch = primitve-discovery
 [submodule "dsbox-profiling"]
 	path = dsbox-profiling
 	url = https://github.com/varunratnakar/dsbox-profiling
