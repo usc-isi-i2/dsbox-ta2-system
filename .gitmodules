@@ -1,7 +1,7 @@
 [submodule "dsbox-ta2"]
 	path = dsbox-ta2
 	url = https://github.com/usc-isi-i2/dsbox-ta2
-	branch = primitive-discovery
+	branch = template-2018-june
 [submodule "dsbox-profiling"]
 	path = dsbox-profiling
 	url = https://github.com/varunratnakar/dsbox-profiling
@@ -18,3 +18,4 @@
 [submodule "ta3ta2-api"]
 	path = ta3ta2-api
 	url = https://gitlab.com/datadrivendiscovery/ta3ta2-api
+        branch = dist-python
