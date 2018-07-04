@@ -1,6 +1,6 @@
-#FROM registry.datadrivendiscovery.org/jpl/docker_images:python3.6_base
-#FROM python:3.6-stretch
-FROM registry.datadrivendiscovery.org/jpl/docker_images/complete:ubuntu-xenial-python36-v2018.1.26
+
+# FROM registry.datadrivendiscovery.org/jpl/docker_images/complete:ubuntu-xenial-python36-v2018.1.26
+FROM registry.datadrivendiscovery.org/jpl/docker_images/complete:ubuntu-artful-python36-v2018.6.5
 
 MAINTAINER D3M
 
@@ -9,23 +9,31 @@ RUN apt-get -y install libssl-dev
 #python3-dev python3-setuptools
 RUN apt-get -y install ffmpeg flac
 
-RUN \
-pip3 install --upgrade pip && \
-pip3 install punk && \
-pip3 install langdetect && \
-pip3 install zerorpc && \
-pip3 install stopit && \
-pip3 install grpcio grpcio-tools && \
-pip3 install librosa cvxpy h5py && \
-pip3 install fancyimpute
+
+RUN git clone https://gitlab.com/datadrivendiscovery/common-primitives && \
+    cd common-primitives && \
+    sed -i "s/# datasets.Denormalize/datasets.Denormalize/" entry_points.ini && \
+    pip3 install -e .
+
+
+RUN pip3 install --upgrade pip
+RUN pip3 install punk
+RUN pip3 install langdetect
+RUN pip3 install zerorpc
+RUN pip3 install stopit
+RUN pip3 install grpcio grpcio-tools
+RUN pip3 install librosa cvxpy h5py
+RUN pip3 install fancyimpute
+RUN pip3 install --install-option="--with-nss" pycurl
+RUN pip3 install mypy
+RUN pip3 install cython
+RUN pip3 install deepdiff==3.3.0 docker[tls]==2.7 frozendict==1.2 pyyaml
 
 # More python packages
 RUN pip3 install pandas keras tensorflow
 RUN pip3 install pillow
 RUN pip3 install pslgraph networkx
 
-# Install D3M stuff
-# RUN pip3 install --process-dependency-links primitive-interfaces
 
 EXPOSE 45042
 
@@ -40,8 +48,6 @@ ENV TA2 $CODE/dsbox-ta2/python
 ENV TA2API $CODE/ta3ta2-api
 COPY . $CODE
 
-# PIP install d3m types
-#RUN cd $CODE/types && pip3 install .
 
 # PYTHON 3 changes
 # Change environment from python to python3 in code
@@ -52,15 +58,6 @@ $TA2/ta2-search \
 $TA2/server/ta2-server.py \
 $TA2/server/ta2-client.py
 
-# Change primitives unified interface to use python3
-RUN \
-sed -i.bak 's/primitive-interfaces\/python2/primitive-interfaces/' \
-$TA2/dsbox_dev_setup.py
-
-# Compile TA3-TA2 api protocol files
-RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/core.proto
-RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/data_ext.proto
-RUN python3 -m grpc_tools.protoc -I $TA2API --python_out=$TA2API --grpc_python_out=$TA2API $TA2API/dataflow_ext.proto
 
 # Make a soft link to the search executable
 RUN chmod 755 $TA2/ta2-search
