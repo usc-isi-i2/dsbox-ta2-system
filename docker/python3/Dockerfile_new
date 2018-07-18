@@ -1,0 +1,40 @@
+FROM registry.gitlab.com/datadrivendiscovery/images/core:ubuntu-artful-python36-v2018.7.10
+
+RUN mkdir -p /user_opt
+RUN mkdir -p /output
+RUN mkdir -p /input
+
+COPY startup.sh /user_opt
+
+RUN chmod a+x /user_opt/startup.sh
+
+#copy any other file you to the container
+#It is recommended that you use a directory /user_opt to hold all your code
+
+ENV CODE /user_opt/dsbox
+ENV TA2 $CODE/dsbox-ta2/python
+
+RUN pip3 install --upgrade pip
+
+RUN mkdir $CODE
+
+RUN cd $CODE && pip3 install -e git+https://gitlab.com/datadrivendiscovery/sklearn-wrap@bf101e1e4b0565e03c2aaa80b5bdd8f0fda04bd7#egg=sklearn-wrap
+RUN cd $CODE && pip3 install -e git+https://gitlab.com/datadrivendiscovery/common-primitives@71164aa9a8f5d849ddec6e8f9d242cea1ad4157e#egg=common-primitives
+
+RUN cd $CODE \
+&& git clone https://github.com/usc-isi-i2/dsbox-ta2.git \
+&& cd dsbox-ta2 \
+&& git checkout 9a6bea9698f4f1e7203a242d3450549abf89ef0e
+
+RUN cd $CODE && pip3 install -e git+https://github.com/usc-isi-i2/dsbox-cleaning@6fe2836a48bbf3707ce795f16cfcd3d921d3d0cc#egg=dsbox-datacleaning
+RUN cd $CODE && pip3 install -e git+https://github.com/usc-isi-i2/dsbox-featurizer@59dacbd057bf16372fdf521117aa6d3e2af6cff9#egg=dsbox-featurizer
+RUN cd $CODE && pip3 install -e git+https://github.com/brekelma/dsbox_corex@cae4750425e307ab80c90dbf78c051c28227303a#egg=dsbox_corex
+
+RUN \
+sed -i.bak 's/env python/env python3/' \
+$TA2/ta2-search \
+$TA2/ta1-run-single-template \
+$TA2/server/ta2-server.py \
+$TA2/server/ta2-client.py
+
+ENTRYPOINT ["/user_opt/startup.sh"]
