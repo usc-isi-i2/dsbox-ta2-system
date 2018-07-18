@@ -8,9 +8,6 @@ COPY startup.sh /user_opt
 
 RUN chmod a+x /user_opt/startup.sh
 
-#copy any other file you to the container
-#It is recommended that you use a directory /user_opt to hold all your code
-
 ENV CODE /user_opt/dsbox
 ENV TA2 $CODE/dsbox-ta2/python
 
@@ -24,7 +21,7 @@ RUN cd $CODE && pip3 install -e git+https://gitlab.com/datadrivendiscovery/commo
 RUN cd $CODE \
 && git clone https://github.com/usc-isi-i2/dsbox-ta2.git \
 && cd dsbox-ta2 \
-&& git checkout 9a6bea9698f4f1e7203a242d3450549abf89ef0e
+&& git checkout b81e5f94ad7dba15e5790900e44e4e2e0eecbbdf
 
 RUN cd $CODE && pip3 install -e git+https://github.com/usc-isi-i2/dsbox-cleaning@6fe2836a48bbf3707ce795f16cfcd3d921d3d0cc#egg=dsbox-datacleaning
 RUN cd $CODE && pip3 install -e git+https://github.com/usc-isi-i2/dsbox-featurizer@59dacbd057bf16372fdf521117aa6d3e2af6cff9#egg=dsbox-featurizer
