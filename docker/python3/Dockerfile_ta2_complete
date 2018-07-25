@@ -28,7 +28,7 @@ RUN cd $CODE && pip3 install -e git+https://gitlab.com/datadrivendiscovery/commo
 RUN cd $CODE \
 && git clone https://github.com/usc-isi-i2/dsbox-ta2.git \
 && cd dsbox-ta2 \
-&& git checkout 5c87df93b078252fddb5c28d989541d0a530d007
+&& git checkout 7b00aef1b4f912410e6ee3ee6e10b8c203498606
 
 
 RUN \
