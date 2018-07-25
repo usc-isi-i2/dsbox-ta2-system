@@ -1,0 +1,45 @@
+FROM registry.datadrivendiscovery.org/jpl/docker_images/complete:ubuntu-artful-python36-v2018.7.10
+
+
+
+RUN mkdir -p /user_opt
+RUN mkdir -p /output
+RUN mkdir -p /input
+
+ENV CODE /user_opt/dsbox
+ENV TA2 $CODE/dsbox-ta2/python
+
+# Install packages need by JHU primitives
+RUN apt-get update && apt-get -y install r-base-core gfortran libblas-dev liblapack-dev libjpeg-dev
+RUN wget http://ftp.us.debian.org/debian/pool/main/c/cdbs/cdbs_0.4.156_all.deb
+RUN dpkg -i cdbs_0.4.156_all.deb
+RUN apt-get install r-base
+RUN apt-get install r-base-dev
+RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
+
+
+RUN pip3 install --upgrade pip
+
+RUN mkdir $CODE
+
+RUN cd $CODE && pip3 install -e git+https://gitlab.com/datadrivendiscovery/sklearn-wrap@bf101e1e4b0565e03c2aaa80b5bdd8f0fda04bd7#egg=sklearn-wrap
+RUN cd $CODE && pip3 install -e git+https://gitlab.com/datadrivendiscovery/common-primitives@7d68751df2ae9bfdcdfd3f39fe49ccbcfaa4b5c9#egg=common-primitives
+
+RUN cd $CODE \
+&& git clone https://github.com/usc-isi-i2/dsbox-ta2.git \
+&& cd dsbox-ta2 \
+&& git checkout 041844655cb5f831e7d13c4764234a9b84ac979a
+
+
+RUN \
+sed -i.bak 's/env python/env python3/' \
+$TA2/ta2-search \
+$TA2/ta1-run-single-template \
+$TA2/server/ta2-server.py \
+$TA2/server/ta2-client.py
+
+COPY startup.sh /user_opt
+RUN chmod a+x /user_opt/startup.sh
+
+ENTRYPOINT ["/user_opt/startup.sh"]
+CMD []
