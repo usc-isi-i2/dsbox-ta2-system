@@ -21,7 +21,7 @@ RUN cd $CODE && pip3 install -e git+https://github.com/brekelma/dsbox_corex@cae4
 RUN cd $CODE \
 && git clone https://github.com/usc-isi-i2/dsbox-ta2.git \
 && cd dsbox-ta2 \
-&& git checkout 0cbcc308c6c247c179a131481cd61a185481403b
+&& git checkout a68ad9a7d80668fb5da4ad8a0cdc7c57fe107dd0
 
 
 RUN \
