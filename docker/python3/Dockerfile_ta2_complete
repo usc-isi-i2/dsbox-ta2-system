@@ -28,7 +28,7 @@ RUN cd $CODE && pip3 install -e git+https://gitlab.com/datadrivendiscovery/commo
 RUN cd $CODE \
 && git clone https://github.com/usc-isi-i2/dsbox-ta2.git \
 && cd dsbox-ta2 \
-&& git checkout d56f3be42db4178119ed1db773df8d4a9fbdfe5c
+&& git checkout 7314542c54bae6d91313e088f3f59a52a39c0dcf
 
 RUN cd $CODE && pip3 install -e git+https://github.com/usc-isi-i2/dsbox-cleaning@79a799626661cdb944a6c317c247f9384e554467#egg=dsbox-datacleaning
 RUN cd $CODE && pip3 install -e git+https://github.com/brekelma/dsbox_corex@5507a14ac42157d433e34ecb6ccede5112bf20c1#egg=dsbox_corex
