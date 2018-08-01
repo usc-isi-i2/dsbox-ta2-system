@@ -23,16 +23,16 @@ RUN pip3 install --upgrade pip
 RUN mkdir $CODE
 
 RUN cd $CODE && pip3 install -e git+https://gitlab.com/datadrivendiscovery/sklearn-wrap@9346c271559fd221dea4bc99c352ce10e518759c#egg=sklearn-wrap
-RUN cd $CODE && pip3 install -e git+https://gitlab.com/datadrivendiscovery/common-primitives@ed9761b0983f19f1655c681c2f2b30a9e4f162ff#egg=common-primitives
+RUN cd $CODE && pip3 install -e git+https://gitlab.com/datadrivendiscovery/common-primitives@fa865a1babc190055cb2a17cbdcd5b37e6f5e774#egg=common-primitives
 
 RUN cd $CODE \
 && git clone https://github.com/usc-isi-i2/dsbox-ta2.git \
 && cd dsbox-ta2 \
-&& git checkout b1ff2df18b4458f0242feea7f7498c7bab1cab9e
+&& git checkout 00276853177bceddac3d54c14996b6cc9134a57a
 
-RUN cd $CODE && pip3 install -e git+https://github.com/usc-isi-i2/dsbox-cleaning@436e25b0ea52cf95b46cb9be27934c1ede8c76cf#egg=dsbox-datacleaning
+RUN cd $CODE && pip3 install -e git+https://github.com/usc-isi-i2/dsbox-cleaning@d3735919d1ca93e4bb1ac4f1c571763bea0f4dce#egg=dsbox-datacleaning
 RUN cd $CODE && pip3 install -e git+https://github.com/brekelma/dsbox_corex@5507a14ac42157d433e34ecb6ccede5112bf20c1#egg=dsbox_corex
-RUN cd $CODE && pip3 install -e git+https://github.com/usc-isi-i2/dsbox-featurizer@516678427a7473c730c79a401184bfaecfe959f3#egg=dsbox-featurizer
+RUN cd $CODE && pip3 install -e git+https://github.com/usc-isi-i2/dsbox-featurizer@6f7ab25bb9341daccc87f29e4b8f7fc46311614e#egg=dsbox-featurizer
 
 
 
