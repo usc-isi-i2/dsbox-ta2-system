@@ -1,4 +1,4 @@
-registry.datadrivendiscovery.org/jpl/docker_images/complete:ubuntu-artful-python36-v2018.7.10-20180801-215033
+FROM registry.datadrivendiscovery.org/jpl/docker_images/complete:ubuntu-artful-python36-v2018.7.10-20180801-215033
 
 RUN mkdir -p /user_opt
 RUN mkdir -p /output
