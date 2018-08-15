@@ -1,0 +1,10 @@
+{
+  "problem_schema": "/Users/runqishao/Downloads/dsbox_rltk/TRAIN/problem_TRAIN/problemDoc.json",
+  "problem_root": "/Users/runqishao/Downloads/dsbox_rltk/TRAIN/problem_TRAIN/",
+  "dataset_schema": "/Users/runqishao/Downloads/dsbox_rltk/TRAIN/dataset_TRAIN/datasetDoc.json",
+  "training_data_root": "/Users/runqishao/Downloads/dsbox_rltk/TRAIN/dataset_TRAIN",
+  "pipeline_logs_root": "/Users/runqishao/Downloads/dsbox_rltk/pipelines",
+  "executables_root": "/Users/runqishao/Downloads/dsbox_rltk/executables",
+  "user_problems_root": "/Users/runqishao/Downloads/dsbox_rltk/user_problems",
+  "temp_storage_root": "/Users/runqishao/Downloads/dsbox_rltk/supporting_files"
+}

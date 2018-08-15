@@ -1,0 +1,9 @@
+{
+  "problem_schema": "/Users/runqishao/Downloads/dsbox_rltk/TEST/problem_TEST/problemDoc.json",
+  "problem_root": "/Users/runqishao/Downloads/dsbox_rltk/TEST/problem_TEST",
+  "dataset_schema": "/Users/runqishao/Downloads/dsbox_rltk/TEST/dataset_TEST/datasetDoc.json",
+  "test_data_root": "/Users/runqishao/Downloads/dsbox_rltk/TEST/dataset_TEST",
+  "results_root": "/Users/runqishao/Downloads/dsbox_rltk/predictions",
+  "executables_root": "/Users/runqishao/Downloads/dsbox_rltk/executables",
+  "temp_storage_root": "/Users/runqishao/Downloads/dsbox_rltk/supporting_files"
+}

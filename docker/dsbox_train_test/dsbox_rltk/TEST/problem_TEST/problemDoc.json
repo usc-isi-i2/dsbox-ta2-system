@@ -1,0 +1,33 @@
+{
+  "about": {
+    "problemID": "rltk_abt_buy",
+    "problemName": "NULL",
+    "taskType": "classification",
+    "taskSubType": "binary",
+    "problemVersion": "1.0",
+    "problemSchemaVersion": "3.1.1"
+  },
+  "inputs": {
+    "data": [
+      {
+        "datasetID": "rltk_abt_buy",
+        "targets": [
+          {
+            "targetIndex": 0,
+            "resID": "0",
+            "colIndex": 1,
+            "colName": "label"
+          }
+        ]
+      }
+    ],
+    "performanceMetrics": [
+      {
+        "metric": "f1Macro"
+      }
+    ]
+  },
+  "expectedOutputs": {
+    "predictionsFile": "predictions.csv"
+  }
+}

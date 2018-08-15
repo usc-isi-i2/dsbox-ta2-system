@@ -1,0 +1,116 @@
+{
+  "about": {
+    "datasetID": "rltk_abt_buy",
+    "datasetName": "rltk_abt_buy",
+    "description": "",
+    "citation": "",
+    "license": "",
+    "source": "",
+    "sourceURI": "",
+    "approximateSize": "",
+    "datasetSchemaVersion": "3.1.1",
+    "redacted": false,
+    "datasetVersion": "1.0"
+  },
+  "dataResources": [
+    {
+      "resID": "0",
+      "resPath": "tables/learningData.csv",
+      "resType": "table",
+      "resFormat": [
+        "text/csv"
+      ],
+      "isCollection": false,
+      "columns": [
+        {
+          "colIndex": 0,
+          "colName": "d3mIndex",
+          "colType": "string",
+          "role": [
+            "index"
+          ]
+        },
+        {
+          "colIndex": 1,
+          "colName": "label",
+          "colType": "categorical",
+          "role": [
+            "suggestedTarget"
+          ]
+        },
+        {
+          "colIndex": 2,
+          "colName": "brand_score",
+          "colType": "real",
+          "role": [
+            "attribute"
+          ]
+        },
+        {
+          "colIndex": 3,
+          "colName": "brand_marker",
+          "colType": "real",
+          "role": [
+            "attribute"
+          ]
+        },
+        {
+          "colIndex": 4,
+          "colName": "model_score",
+          "colType": "real",
+          "role": [
+            "attribute"
+          ]
+        },
+        {
+          "colIndex": 5,
+          "colName": "model_marker",
+          "colType": "real",
+          "role": [
+            "attribute"
+          ]
+        },
+        {
+          "colIndex": 6,
+          "colName": "model2_score",
+          "colType": "real",
+          "role": [
+            "attribute"
+          ]
+        },
+        {
+          "colIndex": 7,
+          "colName": "jaccard_score",
+          "colType": "real",
+          "role": [
+            "attribute"
+          ]
+        },
+        {
+          "colIndex": 8,
+          "colName": "tfidf_score",
+          "colType": "real",
+          "role": [
+            "attribute"
+          ]
+        },
+        {
+          "colIndex": 9,
+          "colName": "price_difference",
+          "colType": "real",
+          "role": [
+            "attribute"
+          ]
+        },
+        {
+          "colIndex": 10,
+          "colName": "price_marker",
+          "colType": "real",
+          "role": [
+            "attribute"
+          ]
+        }
+      ]
+    }
+  ]
+}
