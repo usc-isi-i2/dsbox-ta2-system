@@ -1,8 +1,7 @@
 ### Clone this repo
 
 ```
-git clone https://github.com/usc-isi-i2/dsbox-ta2-system.git
-cd dsbox-ta2-system/docker/dsbox_train_test
+docker pull uscisii2/dsbox
 ```
 
 ### Build docker
@@ -20,7 +19,7 @@ docker run -v {local_disk}/{docker_disk} \
 ```
 eg.
 ```
-docker run -v /Users:/Users dsbox \
+docker run -v /Users:/Users uscisii2/dsbox \
 /Users/runqishao/Downloads/datasets_dsbox/seed_datasets_current/38_sick search 5
 ```
 
@@ -33,6 +32,6 @@ docker run -v {local_disk}/{docker_disk} \
 
 eg.
 ```
-docker run -v /Users:/Users dsbox \
+docker run -v /Users:/Users uscisii2/dsbox \
 /Users/runqishao/Downloads/datasets_dsbox/seed_datasets_current/38_sick test
 ```
