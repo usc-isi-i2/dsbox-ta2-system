@@ -11,7 +11,7 @@ docker build -t dsbox .
 
 ### Prepare a dataset similar to dsbox_rltk
 #### Need to have TRAIN and TEST DIR, search_config.json and test_config.json
-#### TRAIN and TEST have the same structure, 
+#### TRAIN and TEST have the same structure
 ```
 ./TRAIN
     ./dataset_TRAIN
